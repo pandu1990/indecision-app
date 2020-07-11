@@ -7,7 +7,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Indecision App'
+      title: 'Indecision App',
+      template: 'src/template/index.html'
     })
   ],
   output: {
