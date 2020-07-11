@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: './src/app.js',
   plugins: [
     new CleanWebpackPlugin(),
@@ -29,5 +30,6 @@ module.exports = {
         }
       }
     }]
-  }
+  },
+  devtool: 'eval-cheap-module-source-map'
 };
