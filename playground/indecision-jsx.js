@@ -1,4 +1,5 @@
-console.log('App is running');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 const app = {
   title: 'Indecision App',

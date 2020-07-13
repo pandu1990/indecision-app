@@ -4,6 +4,7 @@ class AddOption extends React.Component {
   state = {
     error: undefined
   };
+
   handleAddOption = (e) => {
     e.preventDefault();
     const option = e.target.elements.option.value.trim();
@@ -13,7 +14,8 @@ class AddOption extends React.Component {
       e.target.elements.option.value = '';
     }
   };
-  render() {
+
+  render () {
     return (
       <div>
         {this.state.error && <p className="add-option-error">{this.state.error}</p>}
