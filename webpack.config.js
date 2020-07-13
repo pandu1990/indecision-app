@@ -9,7 +9,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Indecision App',
-      template: 'src/template/index.html'
+      template: './src/template/index.html',
+      favicon: './src/template/favicon.png'
     })
   ],
   output: {
