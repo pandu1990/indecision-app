@@ -7,6 +7,16 @@ class IndecisionApp extends React.Component {
     this.handleDeleteOption = this.handleDeleteOption.bind(this);
     this.state = {
       options: []
+    };
+  }
+  componentDidMount() {
+    this.setState(() => ({
+      options: JSON.parse(localStorage.getItem('options') || '[]')
+    }));
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.options.length !== this.state.options.length) {
+      localStorage.setItem('options', JSON.stringify(this.state.options));
     }
   }
   handleDeleteOptions() {
@@ -78,6 +88,7 @@ const Action = (props) => (
 const Options = (props) => (
   <div>
     <button onClick={props.handleDeleteOptions}>Remove All</button>
+    {props.options.length === 0 && <p>Please add an option to get started!</p>}
     {
       props.options.map((option, optIdx) => (
         <Option 
@@ -116,6 +127,9 @@ class AddOption extends React.Component {
     const option = e.target.elements.option.value.trim();
     const error = this.props.handleAddOption(option);
     this.setState(() => ({ error }));
+    if (!error) {
+      e.target.elements.option.value = '';
+    }
   }
   render() {
     return (
