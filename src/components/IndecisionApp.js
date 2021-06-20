@@ -34,7 +34,7 @@ export default class IndecisionApp extends React.Component {
   }
 
   handleAddOption = (option) => {
-    if(!option) {
+    if (!option) {
       return 'Enter valid value to add item';
     } else if (this.state.options.includes(option)) {
       return 'This option already exists';
@@ -44,46 +44,45 @@ export default class IndecisionApp extends React.Component {
     }));
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.setState(() => ({
       options: JSON.parse(localStorage.getItem('options') || '[]')
     }));
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if(prevState.options.length !== this.state.options.length) {
+  componentDidUpdate (prevProps, prevState) {
+    if (prevState.options.length !== this.state.options.length) {
       localStorage.setItem('options', JSON.stringify(this.state.options));
     }
   }
 
-  render() {
+  render () {
     const title = 'Indecision';
     const subtitle = 'Put your life in the hands of a computer';
     return (
       <div>
         <Header title={title} subtitle={subtitle} />
         <div className="container">
-          <Action 
+          <Action
             hasOptions={this.state.options.length > 0}
             handlePickOption={this.handlePickOption}
           />
           <div className="widget">
-            <Options 
+            <Options
               options={this.state.options}
               handleDeleteOption={this.handleDeleteOption}
               handleDeleteOptions={this.handleDeleteOptions}
             />
-            <AddOption 
+            <AddOption
               handleAddOption={this.handleAddOption}
             />
           </div>
         </div>
-        <OptionModal 
-          selectedOption={this.state.selectedOption} 
-          handleClearSelectedOption={this.handleClearSelectedOption} 
+        <OptionModal
+          selectedOption={this.state.selectedOption}
+          handleClearSelectedOption={this.handleClearSelectedOption}
         />
       </div>
     );
   }
 }
-  

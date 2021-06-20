@@ -4,7 +4,7 @@ export default class AddOption extends React.Component {
   state = {
     error: undefined
   };
-  
+
   handleFormSubmit = (e) => {
     e.preventDefault();
     const option = e.target.elements.option.value.trim();
@@ -15,7 +15,7 @@ export default class AddOption extends React.Component {
     }
   };
 
-  render() {
+  render () {
     return (
       <div>
         {this.state.error && <p className="add-option-error">{this.state.error}</p>}
